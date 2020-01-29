@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% if (objStock['Global Quote'] === undefined) { %>
+    <h1>Erro! Não foi possível encontrar a cotação para esse ativo.</h1>
+    <p>
+        <%= objStock['Error Message'] %>
+    </p>
+    <% } else { %>
+    <h1>Cotação <%= objStock['Global Quote']['01. symbol'] %></h1>
+    <p>
+        R$ <%= objStock['Global Quote']['05. price'] %>
+    </p>
+    <% } %>
+  </body>
+</html>
+
+<!-- {
+  "Global Quote": {
+    "01. symbol":"LINX3.SA",
+    "02. open":"35.4200",
+    "03. high":"35.7800",
+    "04. low":"34.9800",
+    "05. price":"35.1900",
+    "06. volume":"470000",
+    "07. latest trading day":"2020-01-29",
+    "08. previous close":"35.4200",
+    "09. change":"-0.2300",
+    "10. change percent":"-0.6493%"
+  }
+} -->

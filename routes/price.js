@@ -15,19 +15,29 @@ router.get('/b3', function(req, res, next) {
     var unirest = require('unirest');  
     var req = unirest('GET', 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&apikey=NP75EV2DGLZWIGHM&symbol='+code_stock)
     .end(function (resp) { 
-        if (resp.error) throw new Error(resp.error); 
+        if (resp.error) {
+            // throw new Error(resp.error); 
+            res.render('b3', { title: 'Cotações B3', objStock: {}, resError: true, errorMsg: resp.error});
+        }
 
         if (!resp.error && resp.status == 200) {
             let objStock = resp.body;
+            console.log(objStock);
 
             if (objStock['Global Quote'] !== undefined) {
                 const Currency = require('../helpers/Currency');
                 const currency = new Currency();
 
+                const dateFormat = require('dateformat');
+                let date = new Date(objStock['Global Quote']['07. latest trading day']);
+
                 objStock['Global Quote']['05. price'] = currency.formatCurrency(objStock['Global Quote']['05. price'], 2, ',', '.');
+                objStock['Global Quote']['09. change'] = currency.formatCurrency(objStock['Global Quote']['09. change'], 2, ',', '.');
+
+                objStock['Global Quote']['07. latest trading day'] = dateFormat(date, 'dd/mm/yyyy');
             }
         
-            res.render('b3', { title: 'Cotações B3', objStock: objStock});
+            res.render('b3', { title: 'Cotações B3', objStock: objStock, resError: false, errorMsg: ''});
         }
     });
 });

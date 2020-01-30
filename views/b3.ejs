@@ -1,33 +1,68 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<%- include layout/header.ejs %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      
+    </div>
+  </div>
+</div>
+
     <% if (resError === true) { %>
-      <h1>Erro! Não foi possível carregar os dados.</h1>
-      <p>
-          <%= errorMsg %>
-      </p>
+      
+      <div class="card" style="width: 18rem;">
+        <h5 class="card-header">
+          Erro!
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title">
+            Não foi possível carregar os dados.
+          </h5>
+          <p class="card-text">
+            <%= errorMsg %>
+          </p>
+        </div>
+      </div>
+
     <% } else if (objStock['Global Quote'] === undefined) { %>
-      <h1>Erro! Não foi possível encontrar a cotação para esse ativo.</h1>
-      <p>
-          <%= objStock['Error Message'] %>
-      </p>
+      
+      <div class="card" style="width: 18rem;">
+        <h5 class="card-header">
+          Erro!
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title">
+            Não foi possível encontrar a cotação para esse ativo.
+          </h5>
+          <p class="card-text">            
+            <%= objStock['Error Message'] %>
+          </p>
+        </div>
+      </div>
+
     <% } else { %>
-      <h1>Cotação <%= objStock['Global Quote']['01. symbol'] %></h1>
-      <p style="line-height:150%;">
-          Data <%= objStock['Global Quote']['07. latest trading day'] %> 
-          <br>
-          R$ <%= objStock['Global Quote']['05. price'] %> 
-          <br>
-          Variação <%= objStock['Global Quote']['09. change'] %>%
-          <br>
-      </p>
-    <% } %>        
-  </body>
-</html>
+
+      <div class="card" style="width: 18rem;">
+        <h5 class="card-header">
+          <%= objStock['Global Quote']['01. symbol'] %>
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title">
+            R$ <%= objStock['Global Quote']['05. price'] %>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Variação <%= objStock['Global Quote']['09. change'] %>%
+          </h6>
+          <p class="card-text">            
+            Data <%= objStock['Global Quote']['07. latest trading day'] %>
+          </p>
+        </div>
+      </div>
+
+    <% } %>  
+
+
+<%- include layout/footer.ejs %>
 
 <!-- {
   "Global Quote": {

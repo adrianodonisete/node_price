@@ -44,14 +44,14 @@
 
       <div class="card" style="width: 18rem;">
         <h5 class="card-header">
-          <%= objStock['Global Quote']['01. symbol'] %>
+          <%= objStock['Global Quote']['01. symbol'].replace('.SA', '') %>
         </h5>
         <div class="card-body">
           <h5 class="card-title">
             R$ <%= objStock['Global Quote']['05. price'] %>
           </h5>
           <h6 class="card-subtitle mb-2 text-muted">
-            Variação <%= objStock['Global Quote']['09. change'] %>%
+            Variação <%= objStock['Global Quote']['10. change percent'] %>%
           </h6>
           <p class="card-text">            
             Data <%= objStock['Global Quote']['07. latest trading day'] %>

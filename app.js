@@ -44,9 +44,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-let porta = process.env.PORT || 3000;
-app.listen(porta, function () {
-  console.log('Example app listening on port 3000!');
+let _port = process.env.PORT || 3000;
+app.listen(_port, function () {
+  console.log(`Listening on port ${_port}!`);
 });
 
 module.exports = app;

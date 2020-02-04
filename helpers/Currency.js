@@ -3,6 +3,8 @@ class Currency {
         try {
             decimalCount = Math.abs(decimalCount);
             decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+            amount = amount.replace(/\%/, '');
         
             const negativeSign = amount < 0 ? "-" : "";
         

@@ -1,12 +1,8 @@
 <%- include layout/header.ejs %>
 
-<div class="container">
+<div class="container" style="margin:25px 25px;font-size:1.8rem;">
   <div class="row">
-    <div class="col-sm">
-      
-    </div>
-  </div>
-</div>
+    <div class="col-5">
 
     <% if (resError === true) { %>
       
@@ -59,7 +55,20 @@
         </div>
       </div>
 
-    <% } %>  
+    <% } %>         
+    </div> 
+    
+  </div>
+
+
+  <div class="row" style="margin-top: 10px;;">
+    <div class="col-4">
+      <a href="/price/stocks" style="font-size:1.2rem;padding-right:70px;"
+          class="stretched-link float-right">Listar Ações</a>
+    </div>
+  </div>
+
+</div>
 
 
 <%- include layout/footer.ejs %>

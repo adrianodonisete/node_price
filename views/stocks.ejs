@@ -1,0 +1,47 @@
+<%- include layout/header.ejs %>
+
+<div class="container" style="margin:25px 25px;">
+    <div class="row">
+
+        <% if (arrStock === undefined || arrStock.length == 0) { %>
+        
+        <div class="col-2">
+            <div class="card" style="width:18rem;">
+                <h5 class="card-header">
+                Erro!
+                </h5>
+                <div class="card-body">
+                <p class="card-text">
+                    Não foi possível carregar a lista.
+                </p>
+                </div>
+            </div>
+        </div>
+
+        <% } else { %>
+
+        <div class="col-2">
+            <div class="list-group">          
+                <% for (index in arrStock) { %> 
+
+                    <% if (index > 0 && index % 8 == 0) { %> 
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="list-group">  
+                    <% } %> 
+
+                    <h5 class="card-title">
+                        <a href="/price/stock/<%= arrStock[index] %>" 
+                            class="list-group-item list-group-item-action"><%= arrStock[index] %></a>
+                    </h5>
+                <% } %> 
+            </div>       
+        </div>
+
+        <% } %> 
+    </div>
+</div>
+
+
+<%- include layout/footer.ejs %>

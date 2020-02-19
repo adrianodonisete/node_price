@@ -40,6 +40,47 @@ module.exports.getPrice = (req, res) => {
         }
     });
 };
+
+module.exports.listStocks = (req, res) => {
+    // arrStock = {
+    //     'abev3': 'Ambev',
+    // };
+    const arrStock = [
+        'ABEV3',
+        'B3SA3',
+        'BBDC3',
+        'COGN3',
+        'EGIE3',
+        'ENBR3',
+        'EQTL3',
+        'FLRY3',
+        'GRND3',
+        'IRBR3',
+        'ITUB3',
+        'LEVE3',
+        'LINX3',
+        'LREN3',
+        'MDIA3',
+        'ODPV3',
+        'PSSA3',
+        'RADL3',
+        'WEGE3',
+        'BBPO11',
+        'FIIB11',
+        'GGRC11',
+        'HGBS11',
+        'HGLG11',
+        'HGRE11',
+        'KNRI11',
+        'MXRF11',
+        'VILG11',
+        'VISC11',
+        'XPML11',        
+        'SMAC11',        
+        'BOVA11',        
+    ];
+    res.render('stocks', { title: 'Cotações B3 - Lista de Ações', arrStock: arrStock});
+};
 /*
 {
   "Global Quote": {
